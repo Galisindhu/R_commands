@@ -19,8 +19,10 @@ max(sn$Count) # Returns the maximum value in the 'Count' column of the 'sn' data
 min(sn$Count) # Returns the minimum value in the 'Count' column of the 'sn' dataset.
 tail(sn) # Displays the last few rows of the 'sn' dataset.
 View(sn) # Opens a new window displaying the entire 'sn' dataset for easy browsing.
-sn$column_name # This command is incomplete. It appears to be attempting to access a column named 'column_name' in the 'sn' dataset.
-str(sn) # Provides the structure of the 'sn' dataset, displaying the data type and dimensions of each variable.
+sn$column_name # This command is incomplete. It appears to be attempting to access a 
+column named 'column_name' in the 'sn' dataset.
+str(sn) # Provides the structure of the 'sn' dataset, displaying the 
+data type and dimensions of each variable.
 dim(sn) # Returns the dimensions (number of rows and columns) of the 'sn' dataset.
 colnames(sn) # Returns the column names of the 'sn' dataset.
 ls() # Lists all objects in the current R environment.
@@ -28,7 +30,8 @@ names(sn) # Returns the names of the columns in the 'sn' dataset.
 median(sn$Count) # Calculates the median of the 'Count' column in the 'sn' dataset.
 IQR(sn$Count) # Calculates the interquartile range of the 'Count' column in the 'sn' dataset.
 t.test(sn$Count) # Performs a one-sample t-test on the 'Count' column of the 'sn' dataset.
-quantile(sn$Count) # Calculates various quantiles (by default, quartiles) of the 'Count' column in the 'sn' dataset.
+quantile(sn$Count) # Calculates various quantiles (by default, quartiles) of the 
+'Count' column in the 'sn' dataset.
 var(sn$Count) # Calculates the variance of the 'Count' column in the 'sn' dataset.
 class(sn) # Returns the class of the 'sn' object, indicating it's a data frame.
 sn[1,1] # Retrieves the value in the first row and first column of the 'sn' dataset.
@@ -37,8 +40,10 @@ unique(sn$Count) # Returns the unique values in the 'Count' column of the 'sn' d
 nrow(sn) # Returns the number of rows in the 'sn' dataset.
 ncol(sn) # Returns the number of columns in the 'sn' dataset.
 is.na(sn$Count) # Checks for missing values in the 'Count' column of the 'sn' dataset.
-clean_data<-na.omit(sn) # Creates a new dataset 'clean_data' removing rows with any missing values from the 'sn' dataset.
-complete_cases<-complete.cases(sn) # Identifies complete cases in the 'sn' dataset (rows with no missing values).
+clean_data<-na.omit(sn) # Creates a new dataset 'clean_data' removing 
+rows with any missing values from the 'sn' dataset.
+complete_cases<-complete.cases(sn) # Identifies complete cases in the 
+'sn' dataset (rows with no missing values).
 plot(sn$Count,sn$year) # Plots 'Count' against 'year' to visualize their relationship.
 hist(sn$Count)#Create a histogram of 'Count'
 boxplot(sn$Count)#Create a boxplot of 'Count' 
@@ -59,7 +64,8 @@ sn_scaled <- scale(sn[, c("Count", "Year")])#Scale numeric variables
 sn_norm <- scale(sn[, c("Count", "Year")], center = FALSE)#Normalize numeric variables
 sn$Year <- as.factor(sn$Year)#Convert 'Year' to factor
 ts(sn$Count, start = 1910, end = 1912, frequency = 1)#Convert 'Year' to time series
-t.test(sn$Count ~ sn$Gender)#performs a t-test to compare the means of 'Count' between different levels of 'Gender'.
+t.test(sn$Count ~ sn$Gender)#performs a t-test to compare the means of 
+'Count' between different levels of 'Gender'.
 tail(sn,10)#Displays the last 10 rows of the dataset 'sn'
 table(sn$Count)#Creates a frequency table of the 'Count' variable.
 barplot(table(sn$Gender))#Produces a bar plot showing the counts of each gender in the dataset.
@@ -70,21 +76,26 @@ unique(sn$State)#Lists unique values of 'State' in the dataset 'sn'.
 sn$Total <- sn$Count * 10#Creates a new variable 'Total' by multiplying 'Count' by 10.
 scaled_sn <- scale(sn$Count)#Scales the 'Count' variable using z-score normalization.
 write.csv(sn, file = "clean_sn.csv")#Writes the dataframe 'sn' to a CSV file named "clean_sn.csv".
-ts_sn <- ts(sn$Count, start = c(1910, 1), end = c(1912, 12), frequency = 12)#Converts the 'Count' variable into a time series object 'ts_sn' with monthly frequency from January 1910 to December 1912.
+ts_sn <- ts(sn$Count, start = c(1910, 1), end = c(1912, 12), frequency = 12)#Converts the 
+'Count' variable into a time series object 'ts_sn' with monthly frequency from January 1910 to December 1912.
 acf(ts_sn)#Produces the autocorrelation function plot for the time series 'ts_sn'.
 which.min(sn$Count)#Returns the index of the minimum value for 'Count'
 which.max(sn$Count)#Returns the index of the maximum value for 'Count' 
 which.min(sn$Year)#Returns the index of the minimum value for 'Year'.
 which.max(sn$Year)#Returns the index of the maximum value for 'Year'.
-quantile(sn$column_name, probs = c(0.25, 0.75))#Computes the 25th and 75th percentiles for a specified column ('column_name') in the 'sn' dataset.
+quantile(sn$column_name, probs = c(0.25, 0.75))#Computes the 25th and 75th percentiles for a specified 
+column ('column_name') in the 'sn' dataset.
 subset(sn,!is.na(sn$Count))#Subsets the dataframe 'sn' to remove rows where 'Count' is NA.
 scale(sn$Count)#Scales the 'Count' variable using z-score normalization.
 scale(sn$Count,center=TRUE,scale=FALSE)#Centers the 'Count' variable but does not scale it.
 sn[100000,3]#Selects specific elements from the dataframe 'sn'.
 sn[3,2]#Selects specific elements from the dataframe 'sn'.
 sn[3,-1]#Selects specific elements from the dataframe 'sn'.
-lm(sn$Year ~ sn$Count, sn)#Fits a linear regression model with 'Year' as the dependent variable and 'Count' as the independent variable.
-glm(sn$Year ~ sn$Count, sn, family = "binomial")#Attempts to fit a logistic regression model with 'Year' as the response variable and 'Count' as the predictor, though 'Year' seems to be a continuous variable, so this may not be appropriate.
+lm(sn$Year ~ sn$Count, sn)#Fits a linear regression model with 'Year' as the dependent variable and 
+'Count' as the independent variable.
+glm(sn$Year ~ sn$Count, sn, family = "binomial")#Attempts to fit a logistic regression model with 
+'Year' as the response variable and 'Count' as the predictor, though 'Year' seems to be a continuous 
+variable, so this may not be appropriate.
 table(sn$Gender)#Creates frequency table for 'Gender'
 table(sn$State)#Creates frequency table for 'State'
 table(sn$Year)#Creates frequency tables for 'Year'.
